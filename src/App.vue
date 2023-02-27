@@ -1,7 +1,10 @@
 <template>
 	<div>
+		<!-- v-bind pode ser substituido pelo ":". Ex: v-bind:key = :key -->
 		<div v-for="(obj, index) in todos" :key="obj.id" class="todo-item">
 			{{ index + 1 }} - {{ obj.title }}
+			<!-- esta img só irá exibir caso obj.imgSrc for true -->
+			<img v-if="obj.imgSrc" :src="obj.imgSrc" :alt="obj.imgAlt" />
 		</div>
 	</div>
 </template>
@@ -18,12 +21,16 @@ export default {
 					id: 1,
 					title: "delectus aut autem",
 					completed: false,
+					imgSrc: "https://via.placeholder.com/150/3d1365/00ff00/?text=Imagem",
+					imgAlt: "Foto do Jon",
 				},
 				{
 					userId: 1,
 					id: 2,
 					title: "quis ut nam facilis et officia qui",
 					completed: false,
+					imgSrc: "https://via.placeholder.com/150/3d1365/00ff00/?text=Imagem",
+					imgAlt: "Foto do Jon",
 				},
 				{
 					userId: 1,
