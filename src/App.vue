@@ -4,7 +4,7 @@
 		<div v-for="(obj, index) in todos" :key="obj.id" class="todo-item">
 			{{ index + 1 }} - {{ obj.title }}
 			<!-- esta img só irá exibir caso obj.imgSrc for true -->
-			<img v-if="obj.imgSrc" :src="obj.imgSrc" :alt="obj.imgAlt" />
+			<img class="todo-img" v-if="obj.imgSrc" :src="obj.imgSrc" :alt="obj.imgAlt" />
 		</div>
 	</div>
 </template>
@@ -58,6 +58,9 @@ export default {
 </script>
 
 <style>
+.todo-img {
+	display: block;
+}
 .todo-item {
 	background: #00ff00;
 	color: #3d1365;
