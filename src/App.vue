@@ -1,28 +1,55 @@
 <template>
 	<div>
-		<h1 :class="{ title: true, 'title-home': isHome }">Curso Vue 3</h1>
-		<p :class="pClass">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid eaque
-			voluptatum quis minima pariatur amet asperiores, impedit magnam ab quidem
-			obcaecati! Sed alias maiores repudiandae cum aperiam. Ipsam, obcaecati
-			doloremque?
-		</p>
-		<p :style="styleClass">
-			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis nihil,
-			culpa quae consequuntur nam ex odit exercitationem sed ullam cupiditate
-			velit sapiente consequatur officia vero enim similique id consectetur ad?
-		</p>
-		<!-- v-bind pode ser substituido pelo ":". Ex: v-bind:key = :key -->
-		<div v-for="(obj, index) in todos" :key="obj.id" class="todo-item">
-			{{ index + 1 }} - {{ obj.title }}
-			<!-- esta img só irá exibir caso obj.imgSrc for true -->
-			<img
-				class="todo-img"
-				v-if="obj.imgSrc"
-				:src="obj.imgSrc"
-				:alt="obj.imgAlt"
-			/>
+		<div>
+			two-way data binding <br />
+			v-model -> formulários
 		</div>
+
+		<br /><br />
+
+		<label>Nome</label><br />
+		<input v-model="name" id="name" type="text" /><br />
+		<p class="text-value">{{ name }}</p>
+
+		<br /><br />
+
+		<label>Esportes</label><br />
+		<select v-model="esportes">
+			<option value="">Escolha seu esporte favorito</option>
+			<option value="Futebol">Futebol</option>
+			<option value="Vôlei">Vôlei</option>
+			<option value="Basquete">Basquete</option>
+		</select>
+		<br />
+		<p class="text-value">{{ esportes }}</p>
+
+		<br /><br />
+
+		<label>Newsletter</label><br />
+		<input type="radio" v-model="newsletter" value="Sim" /> Sim
+
+		<input type="radio" v-model="newsletter" value="Não" /> Não
+		<br />
+		<p class="text-value">{{ newsletter }}</p>
+
+		<br /><br />
+
+		<label>Contrato</label><br />
+		<input type="checkbox" v-model="contrato" /> Aceitar nossos termos...
+
+		<br />
+		<p class="text-value">{{ contrato }}</p>
+
+		<br /><br />
+
+		<label>Escolha sua cor favorita</label><br />
+		<input type="checkbox" v-model="cores" value="Amarelo" /> Amarelo
+		<input type="checkbox" v-model="cores" value="Azul" /> Azul
+		<input type="checkbox" v-model="cores" value="Verde" /> Verde
+		<input type="checkbox" v-model="cores" value="Vermelho" /> Vermelho
+
+		<br />
+		<p class="text-value">{{ cores }}</p>
 	</div>
 </template>
 
@@ -32,76 +59,22 @@ export default {
 	//data é a central de variáveis do componente, tudo que declarar aqui ficará disponível pra usar no componente
 	data() {
 		return {
-			isHome: true,
-			classVar: "",
-			pClass: ["text", { "text-home": this.isHome }],
-			styleClass: { color: "aqua", background: "black" },
-			todos: [
-				{
-					userId: 1,
-					id: 1,
-					title: "delectus aut autem",
-					completed: false,
-					imgSrc: "https://via.placeholder.com/150/3d1365/00ff00/?text=Imagem",
-					imgAlt: "Foto do Jon",
-				},
-				{
-					userId: 1,
-					id: 2,
-					title: "quis ut nam facilis et officia qui",
-					completed: false,
-					imgSrc: "https://via.placeholder.com/150/3d1365/00ff00/?text=Imagem",
-					imgAlt: "Foto do Jon",
-				},
-				{
-					userId: 1,
-					id: 3,
-					title: "fugiat veniam minus",
-					completed: false,
-				},
-				{
-					userId: 1,
-					id: 4,
-					title: "et porro tempora",
-					completed: true,
-				},
-				{
-					userId: 1,
-					id: 5,
-					title:
-						"laboriosam mollitia et enim quasi adipisci quia provident illum",
-					completed: false,
-				},
-			],
+			name: "Rodrigo",
+			esportes: "",
+			newsletter: "Sim",
+			contrato: false,
+			cores: [],
 		};
 	},
 };
 </script>
 
 <style>
-.title {
-	font-size: 20px;
-	color: blue;
-}
-.title-home {
-	font-size: 40px;
-	color: green;
-}
-.text {
-	color: gray;
-}
-.text-home {
-	color: greenyellow;
-}
-.todo-img {
-	display: block;
-}
-.todo-item {
-	background: #00ff00;
-	color: #3d1365;
-	font-weight: bold;
-	margin: 0 0 3px 0;
-	padding: 3px 6px;
+.text-value {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	color: red;
 }
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
